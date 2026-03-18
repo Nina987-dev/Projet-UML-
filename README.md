@@ -58,7 +58,7 @@ L’application récupère des données depuis des API externes, les traite, pui
 Groupe C
 
 - Chef de projet : Celina CHEBALLAH
-- Adama
+- Responsable backend : Adama BA
 - Dalya GHALEB
 - Karima GAUTIH
 - Nasifa
