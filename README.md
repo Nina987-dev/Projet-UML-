@@ -61,7 +61,7 @@ Groupe C
 - Responsable backend : Adama BA
 - Dalya GHALEB
 - Karima GAUTIH
-- Nasifa
+- Responsable Front-End : Nasifa ZABALMOUGAMADOU
 
 ---
 
