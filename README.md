@@ -59,9 +59,9 @@ Groupe C
 
 - Chef de projet : Celina CHEBALLAH
 - Responsable backend : Adama BA
-- Dalya GHALEB
-- Karima GAUTIH
-- Nasifa
+- Responsable UML/ analyse : Dalya GHALEB
+- Responsable tests / documentation : Karima GAUTIH
+- Responsable frontend : Nasifa Zabalmougamadou
 
 ---
 
