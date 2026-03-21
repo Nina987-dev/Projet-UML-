@@ -1,16 +1,16 @@
 # Projet-UML - Plateforme de Visualisation de Données en Temps Réel
 
-** Description
+** Description :
   Ce projet consiste en la conception et la réalisation d’une plateforme web permettant de visualiser des tendances mondiales en temps réel (économiques, sociales, politiques, etc.).
   L’application récupère des données depuis des API externes, les traite, puis les restitue sous forme de graphiques interactifs afin de faciliter leur analyse et leur compréhension par les utilisateurs. 
 
-** Objectifs
+** Objectifs :
   Fournir une visualisation claire et dynamique des tendances mondiales. 
   Permettre le filtrage des données par catégories (Economie, Social, etc.). 
   Afficher des graphiques interactifs en temps réel pour le suivi des indicateurs. 
   Conserver un historique structuré des données pour l'analyse temporelle. 
 
-** Stack Technique
+** Stack Technique :
   * Frontend (Responsable: Nasifa)
   Framework: React (via Vite) 
   Communication: Axios 
@@ -27,14 +27,14 @@
   Design/UML: Figma, Draw.io, Visual Paradigm
 
 
-** Equipe (Groupe C)
+** Equipe (Groupe C) :
   Chef de projet : Celina CHEBALLAH 
   Responsable Backend : Adama BA 
   Responsable UML/Analyse : Dalya GHALEB 
   Responsable Tests : Karima GAUTIH 
   Responsable Front-End : Nasifa ZABALMOUGAMADOU 
 
-** Structure du Backend
+** Structure du Backend :
   * main.py: Point d'entrée de l'API FastAPI et définition des routes.
   * collecteur.py: Logique d'extraction et de sauvegarde des données (NewsAPI, AlphaVantage).
   * queries.py: Centralisation des requêtes SQL pour la base de données.
@@ -43,17 +43,17 @@
   * models.py: Définition des entités ORM SQLAlchemy.
   * database.py: Gestion de la connexion et de la session vers la base de données.
   
-** Guide de lancement
-  1. Installation des dependances
+** Guide de lancement :
+  1. Installation des dependances :
     Avant de lancer le projet, installez les bibliothèques nécessaires via le terminal :
     pip install fastapi uvicorn psycopg2-binary httpx python-dotenv sqlalchemy
-  2. Configuration de la base de donnees
+  2. Configuration de la base de donnees :
     Assurez-vous que PostgreSQL est lancé et que vos identifiants sont renseignés dans le fichier .env. Initialisez ensuite la structure des tables :
     python init_db.py (Cette commande supprime les tables existantes et les recrée à neuf)
-  3. Collecte des donnees
+  3. Collecte des donnees :
     Exécutez le collecteur pour interroger les API externes et remplir la base de données :
     python collecteur.py
-  4. Lancement du serveur API
+  4. Lancement du serveur API :
     Le serveur API fait le pont entre la base de données PostgreSQL et l'interface utilisateur. Pour démarrer le service, exécutez la commande suivante dans le dossier backend/app :
     python -m uvicorn main:app --reload
     Accès et Test de l'API
@@ -68,7 +68,7 @@
   * Documentation Interactive (Swagger UI) :
     FastAPI génère automatiquement une documentation interactive conforme aux normes OpenAPI, permettant de tester chaque route et de visualiser les schémas de données :
     URL de documentation : http://127.0.0.1:8000/docs.
-  * Comprendre l'infrastructure technique
+  * Comprendre l'infrastructure technique :
     127.0.0.1 (Localhost) : Il s'agit de l'adresse de bouclage réseau de votre propre ordinateur.
     Port 8000 : Canal de communication logiciel réservé par défaut au serveur de développement FastAPI pour éviter les conflits.
     JSON (JavaScript Object Notation) : Format standard d'échange de données, permettant au Backend (Python) de transmettre des objets structurés au Frontend (JavaScript).
