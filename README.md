@@ -11,11 +11,11 @@
   Conserver un historique structuré des données pour l'analyse temporelle. 
 
 ** Stack Technique :
-  * Frontend (Responsable: Nasifa)
+  * Frontend :
   Framework: React (via Vite) 
   Communication: Axios 
   Visualisation: Recharts 
-  * Backend (Responsable: Adama)
+  * Backend :
   Langage: Python 3.10+ 
   Framework: FastAPI 
   Validation: Pydantic 
@@ -28,11 +28,11 @@
 
 
 ** Equipe (Groupe C) :
-  Chef de projet : Celina CHEBALLAH 
-  Responsable Backend : Adama BA 
-  Responsable UML/Analyse : Dalya GHALEB 
-  Responsable Tests : Karima GAUTIH 
-  Responsable Front-End : Nasifa ZABALMOUGAMADOU 
+  Celina CHEBALLAH 
+  Adama BA 
+  Dalya GHALEB 
+  Nasifa ZABALMOUGAMADOU
+  Karima GAUTIH 
 
 ** Structure du Backend :
   * main.py: Point d'entrée de l'API FastAPI et définition des routes.
