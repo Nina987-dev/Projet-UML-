@@ -28,11 +28,11 @@
 
 
 ** Equipe (Groupe C) :
-  Celina CHEBALLAH 
-  Adama BA 
-  Dalya GHALEB 
-  Nasifa ZABALMOUGAMADOU
-  Karima GAUTIH 
+  Celina CHEBALLAH, 
+  Adama BA, 
+  Dalya GHALEB, 
+  Nasifa ZABALMOUGAMADOU,
+  Karima GAUTIH, 
 
 ** Structure du Backend :
   * main.py: Point d'entrée de l'API FastAPI et définition des routes.
