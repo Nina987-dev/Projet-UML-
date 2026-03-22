@@ -1,0 +1,226 @@
+body{
+    background : linear-gradient(to right, #F0F4F7,#8D8F91);
+    overflow-x: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;  /* Pousse le logo à gauche et les boutons à droite */
+    align-items:center; /* aligner verticalement*/
+    background-color: white;
+    padding:15px 50px;
+    box-shadow: 0 4px 6px -2px rgba(0,0,0,0.2);
+}
+
+.logo{
+    display:flex;
+    font-weight:bold;
+    font-size: 1.5rem;
+    align-items: center;;
+}
+
+.tag_live{
+    background-color:#C8102E;
+    color:white;
+    padding:5px 15px;
+}
+
+/* Ajout du point rouge */
+.logo::before {
+    content: ""; /* On crée un élément vide */
+    display: inline-block;
+    width: 10px;
+    height: 25px;
+    width: 25px;
+    background-color: #C8102E;
+    border-radius: 50%;
+    margin-right: 10px; 
+}
+
+.tag_news{
+    background-color:#1D253D;
+    color:white;
+    padding:5px 15px;
+}
+
+.auth_buttons{
+    display:flex;
+    gap: 5px;
+}
+
+.btn_creation{
+    display : inline-block;
+    color:white;
+    background: linear-gradient(180deg, #0F172A 0%, #334155 100%);
+    padding: 10px 25px;
+    border-radius:20px;
+    text-decoration:none;
+    transition: opacity 0.2s; /*quand l'opacity change, transition sur 0.2sec */
+    font-weight: 500;
+    font-size:1.2rem;
+}
+
+.btn_creation:hover{
+    opacity:0.9;
+}
+
+.btn_connexion{
+    color : #0F172A;
+    padding: 10px 25px;
+    font-weight: 500;
+    font-size:1.2rem;
+}
+
+.btn_connexion:hover {
+    color: #475569; 
+    border-bottom-color: #475569;
+}
+
+/*PARTIE DE DROITE */
+.content{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing:border-box;
+    margin:0 auto;
+
+
+}
+.txt_left{
+    width: 50%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color:#0F172A;
+    margin-left:25px;
+    margin-top:20px;
+    height:350px;
+}
+
+.image_present {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 45%;
+    position: relative; 
+    top:100px;
+
+}
+
+.rect_bleu {
+    position: absolute;
+    top: -30px;  /*30px auddessus d elimage */
+    bottom: -30px;
+    left: 40px; 
+    right: -20px; 
+    background-color: #0F172A;
+    border-radius: 10px;
+    z-index: 1; /* Derrière */
+}
+
+.img_presentation {
+    position: relative;
+    z-index: 2; /* Devant */
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border  : 4px solid #0F172A;
+    left:10px;
+}
+
+.icon{
+    width: 100px;
+    height:auto;
+    margin-bottom: 20px;
+    margin-left:10px;
+}
+
+.icon_titre{
+    display:flex;
+    align-items: center;
+    gap:30px;
+
+}
+.txt_left h2 {
+    font-size: 2.5rem;   
+    font-weight: 700;   
+    line-height: 1.2;
+    margin-bottom:10px;
+}
+
+.description{
+    font-size: 1.3rem;
+    color: #475569;   
+    margin-bottom: 30px;
+}
+
+.dessins{
+    display:flex;
+    gap:30px;
+    margin-top:25px;
+}
+
+.bulle{
+    width: 200px;
+    height:175px;
+    border-radius: 85px;
+    overflow:hidden; /*pr couper l'image si sa depasse*/
+    border:4px solid #0F172A;
+}
+
+.bulle img{
+    width:100%;
+    height:100%;
+    object-fit:cover; /* pr ne pas tere déformée*/
+}
+
+.exploration{
+    margin-top:35px;
+}
+
+.explorer{
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #0F172A;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.explorer:hover {
+    color: #475569; 
+    border-bottom-color: #475569;
+}
+
+.compte{
+    font-style: italic;
+    font-size:0.9rem;
+    color: #0F172A;
+    margin-top:10px;
+}
+
+.inscrie{
+    color: #0F172A;
+}
+
+.comm{
+    font-style: italic;
+    font-size: 0.9rem;
+    text-align: right;
+    color: #334155;
+    margin-right:10px;
+}
+
+.image_rect{
+    position:relative;
+    width: 100%;
+    margin-bottom:40px;
+}
