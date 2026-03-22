@@ -2,8 +2,8 @@
 
 
 from sqlalchemy.orm import Session
-from ..models import Indicateur
-from ..schemas import IndicateurBase
+from models import Indicateur
+from schemas import IndicateurBase
 
 #Retourne tous les indicateurs de la base de données.
 def get_all(db: Session):

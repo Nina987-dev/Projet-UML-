@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from ..models import Categorie
-from ..schemas import CategorieBase
+from models import Categorie
+from schemas import CategorieBase
 
 # Retourne toutes les catégories de la base de données.
 def get_all(db: Session):

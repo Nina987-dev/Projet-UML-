@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from ..models import Tendance
-from ..schemas import TendanceBase
+from models import Tendance
+from schemas import TendanceBase
 from datetime import datetime
 
 # Retourne toutes les tendances de la base de données.
