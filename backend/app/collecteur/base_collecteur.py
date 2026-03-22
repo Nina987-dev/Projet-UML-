@@ -2,8 +2,8 @@ from datetime import datetime
 import httpx
 from sqlalchemy.orm import Session
 from abc import ABC, abstractmethod
-from models import Tendance, Historique, SourceAPI
-from database import SessionLocal
+from ..models import Tendance, Historique, SourceAPI
+from ..database import SessionLocal
 
 
 class BaseCollecteur(ABC):

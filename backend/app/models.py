@@ -27,11 +27,11 @@ class Indicateur(Base):
     unit = Column(String(100))
     category_id = Column(Integer, ForeignKey('categories.id'), nullable=False)
     description = Column(Text, nullable=True)
+
     categorie = relationship("Categorie", back_populates='indicateurs')
 
     tendances = relationship("Tendance", back_populates='indicateur')
     historique = relationship("Historique", back_populates='indicateur')
-
 class SourceAPI(Base):
     __tablename__ = 'sources_api'
     id = Column(Integer, primary_key=True, index=True)
