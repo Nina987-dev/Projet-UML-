@@ -32,12 +32,17 @@ class SourceAPIResponse(SourceAPIBase):
 
 class TendanceBase(BaseModel):
     valeur: float
-    pays: str | None = None
+    pays: str
     source_id: int
     indicateur_id: int
 class TendanceResponse(TendanceBase):
-    id: int
-    date_heure: datetime
+
+    id              : int
+    date_heure      : datetime
+
+    indicateur_name : str | None = None
+    indicateur_unit : str | None = None
+    source_name : str | None = None
     class Config:
         from_attributes = True
 
@@ -47,8 +52,11 @@ class HistoriqueBase(BaseModel):
     indicateur_id: int
 
 class HistoriqueResponse(HistoriqueBase):
-    id: int
-    date_heure: datetime
+    id              : int
+    date_heure      : datetime
+    indicateur_name : str | None = None
+    indicateur_unit : str | None = None
+    source_name     : str | None = None
     class Config:
         from_attributes = True
 class UserBase(BaseModel):
@@ -59,9 +67,7 @@ class UserBase(BaseModel):
 
 class UserResponse(BaseModel):
     id: int
-    name: str
-    first_name: str
-    email: str
+
     date_inscription: datetime
     class Config:
         from_attributes = True

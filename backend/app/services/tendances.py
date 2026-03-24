@@ -1,8 +1,16 @@
 from sqlalchemy.orm import Session
-from models import Tendance
-from schemas import TendanceBase
-from datetime import datetime
+from models import Tendance, Indicateur
+#from ..schemas import TendanceBase
+#from datetime import datetime
 
+# Retourne toutes les tendances d'un indicateur précis
+def get_by_category(db: Session, category_id: int):
+    return db.query(Tendance, Indicateur).join(Indicateur, Tendance.indicateur_id == Indicateur.id).filter(Indicateur.category_id == category_id).all()
+
+
+
+
+"""
 # Retourne toutes les tendances de la base de données.
 def get_all(db: Session):
     return db.query(Tendance).all()
@@ -30,6 +38,7 @@ def create(db: Session, data: TendanceBase):
     db.refresh(tendance)
     return tendance
 
+
 #Met à jour la valeur actuelle d'une tendance existante.
 def update(db: Session, pays:str, indicateur_id: int, data: TendanceBase):
     tendance = db.query(Tendance).filter(Tendance.pays == pays,
@@ -43,3 +52,6 @@ def update(db: Session, pays:str, indicateur_id: int, data: TendanceBase):
 
     return tendance
 
+
+
+"""

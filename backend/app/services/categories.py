@@ -6,6 +6,8 @@ from schemas import CategorieBase
 def get_all(db: Session):
     return db.query(Categorie).all()
 
+
+"""
 # Retourne une catégorie précise ar son id.
 def get_category(db: Session, category_id: int):
     return db.query(Categorie).filter(Categorie.id == category_id).first()
@@ -17,3 +19,4 @@ def create(db: Session, data: CategorieBase):
     db.commit()
     db.refresh(categorie)
     return categorie
+"""
