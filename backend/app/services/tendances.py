@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from models import Tendance, Indicateur
+from models import Tendance, Indicateur, SourceAPI
 #from ..schemas import TendanceBase
 #from datetime import datetime
 
@@ -8,7 +8,14 @@ def get_by_category(db: Session, category_id: int):
     return db.query(Tendance, Indicateur).join(Indicateur, Tendance.indicateur_id == Indicateur.id).filter(Indicateur.category_id == category_id).all()
 
 
-
+# Retourne toutes les tendances d'un indicateur précis.
+def get_by_indicateur(db: Session, indicateur_id: int):
+    resultats = db.query(Tendance, Indicateur, SourceAPI) \
+        .join(Indicateur, Tendance.indicateur_id == Indicateur.id) \
+        .join(SourceAPI, Tendance.source_id == SourceAPI.id) \
+        .filter(Tendance.indicateur_id == indicateur_id) \
+        .all()
+    return resultats
 
 """
 # Retourne toutes les tendances de la base de données.
