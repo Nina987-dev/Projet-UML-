@@ -2,8 +2,8 @@ from datetime import datetime
 import httpx
 from sqlalchemy.orm import Session
 from abc import ABC, abstractmethod
-from ..models import Tendance, Historique, SourceAPI
-from ..database import SessionLocal
+from models import Tendance, Historique, SourceAPI
+from database import SessionLocal
 
 
 class BaseCollecteur(ABC):
@@ -118,10 +118,10 @@ class BaseCollecteur(ABC):
                 if tendance_existante.valeur == donnee["valeur"]:
                     # Même valeur → pas de changement, on passe au suivant
                     continue
-
+                if donnee["date_heure"] > tendance_existante.date_heure:
                 # Valeur différente → on met à jour la tendance actuelle
-                tendance_existante.valeur     = donnee["valeur"]
-                tendance_existante.date_heure = donnee["date_heure"]
+                    tendance_existante.valeur     = donnee["valeur"]
+                    tendance_existante.date_heure = donnee["date_heure"]
 
             else:
                 # La tendance n'existe pas encore → on la crée
