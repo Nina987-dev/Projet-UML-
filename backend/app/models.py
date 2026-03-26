@@ -13,11 +13,8 @@ class Categorie(Base):
     __tablename__ = 'categories'
     id = Column(Integer, primary_key=True, index=True,nullable=False)
     name = Column(String, unique=True, nullable=False)
-
-
     indicateurs = relationship("Indicateur", back_populates='categorie')
     sources = relationship("SourceAPI", back_populates='categorie')
-
 
 
 class Indicateur(Base):
