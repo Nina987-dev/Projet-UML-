@@ -13,57 +13,52 @@ class CollecteurWorldBank(BaseCollecteur):
     """
 
     # Les 8 pays suivis (codes alpha-2 séparés par ;)
+
     PAYS = "FR;DE;US;GB;IT;JP;CA;CN"
 
-    # { nom en base : code World Bank }
-    INDICATEURS = {
-        # Économie
-        "PIB"                    : "NY.GDP.MKTP.CD",
-        "Inflation"              : "FP.CPI.TOTL.ZG",
-        "Chômage"                : "SL.UEM.TOTL.ZS",
-        "PIB par habitant"       : "NY.GDP.PCAP.CD",
-        "Dette publique"         : "GC.DOD.TOTL.GD.ZS",
-        # Environnement
-        "Émissions CO2"          : "EN.GHG.CO2.PC.CE.AR5",
-        "Superficie forestière"  : "AG.LND.FRST.ZS",
-        "Eau douce"              : "ER.H2O.FWTL.ZS",
-        "Accès eau potable"      : "SH.H2O.SAFE.ZS",
-        "Qualité de l'air"       : "EN.ATM.PM25.MC.M3",
-        # Social
-        "Population"             : "SP.POP.TOTL",
-        "Espérance de vie"       : "SP.DYN.LE00.IN",
-        "Taux de pauvreté"       : "SI.POV.DDAY",
-        "Inégalités (Gini)"      : "SI.POV.GINI",
-        "Taux d'alphabétisation" : "SE.ADT.LITR.ZS",
+    INDICATEURS_ECONOMIE = {
+        "PIB"              : "NY.GDP.MKTP.CD",
+        "Inflation"        : "FP.CPI.TOTL.ZG",
+        "Chômage"          : "SL.UEM.TOTL.ZS",
+        "PIB par habitant" : "NY.GDP.PCAP.CD",
+        "Dette publique"   : "GC.DOD.TOTL.GD.ZS",
+    }
+    INDICATEURS_ENVIRONNEMENT = {
+        "Émissions CO2"         : "EN.GHG.CO2.PC.CE.AR5",
+        "Superficie forestière" : "AG.LND.FRST.ZS",
+        "Eau douce"             : "ER.H2O.FWTL.ZS",
+        "Accès eau potable"     : "SH.H2O.SMDW.ZS",
+        "Qualité de l'air"      : "EN.ATM.PM25.MC.M3",
+    }
+    INDICATEURS_SOCIAL = {
+        "Population"          : "SP.POP.TOTL",
+        "Espérance de vie"    : "SP.DYN.LE00.IN",
+        "Taux de pauvreté"    : "SI.POV.DDAY",
+        "Inégalités (Gini)"   : "SI.POV.GINI",
+        "Mortalité infantile" : "SP.DYN.IMRT.IN",
+    }
+    INDICATEURS_PAR_SOURCE = {
+        1 : INDICATEURS_ECONOMIE,
+        2 : INDICATEURS_ENVIRONNEMENT,
+        3 : INDICATEURS_SOCIAL,
     }
 
+
     async def appeler_api(self):
-        """
-        Appelle World Bank pour chaque indicateur.
-        Récupère l'id de chaque indicateur dynamiquement depuis la base.
-        Retourne une liste de tuples (indicateur_id, reponse_json)
-        """
-        # Récupère l'URL de base depuis sources_api
-        source = self.session.query(SourceAPI) \
-            .filter(SourceAPI.id == self.source_id) \
-            .first()
+        source = self.session.query(SourceAPI)\
+                     .filter(SourceAPI.id == self.source_id)\
+                     .first()
+
+        # Sélectionne uniquement les indicateurs de la catégorie
+        indicateurs = self.INDICATEURS_PAR_SOURCE.get(self.source_id, {})
 
         resultats = []
+        for nom, code in indicateurs.items():
+            indicateur = self.session.query(Indicateur)\
+                             .filter(Indicateur.name == nom)\
+                             .first()
 
-        for nom, code in self.INDICATEURS.items():
-
-            # Cherche l'id de l'indicateur par son nom en base
-            indicateur = self.session.query(Indicateur) \
-                .filter(Indicateur.name == nom) \
-                .first()
-
-            if indicateur is None:
-                print(f"Indicateur '{nom}' non trouvé en base — on passe !")
-                continue
-
-            # Construit l'URL complète
             url = f"{source.url_base}/{self.PAYS}/indicator/{code}?format=json&per_page=1000"
-
             try:
                 async with httpx.AsyncClient() as client:
                     reponse = await client.get(url, timeout=30)

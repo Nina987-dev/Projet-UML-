@@ -73,8 +73,8 @@ class CollecteurFRED(BaseCollecteur):
 
             # Prend uniquement la dernière ligne
             derniere = lignes[-1]
-            date_str = derniere[0]   # ex: "2026-02-01"
-            valeur   = derniere[1]   # ex: "5.25"
+            date_str = derniere[0]
+            valeur   = derniere[1]
 
             # Ignore les valeurs vides
             if not valeur:

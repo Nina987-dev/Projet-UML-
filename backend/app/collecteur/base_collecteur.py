@@ -57,24 +57,9 @@ class BaseCollecteur(ABC):
             Le JSON de la réponse si succès
             None si erreur
         """
+    @abstractedness
     async def appeler_api(self):
-
-        # Récupère la source API depuis la base de données
-        source = self.session.query(SourceAPI).filter(SourceAPI.id == self.source_id).first()
-        try:
-            # Appel HTTP asynchrone avec un timeout de 10 secondes
-            async with httpx.AsyncClient() as client:
-                reponse = await client.get(source.url_base, timeout=10)
-                reponse.raise_for_status()
-
-                # Retourne la réponse en JSON
-                return reponse.json()
-
-        except Exception as e:
-            # Affiche l'erreur sans faire planter le programme
-            print(f"Erreur appel API {source.nom} : {e}")
-            return None
-
+        pass
 
     """
         Méthode abstraite — DOIT être redéfinie dans chaque classe fille.
@@ -86,7 +71,7 @@ class BaseCollecteur(ABC):
 
         """
 
-    @abstractmethod
+    @abstractedness
     def transformer(self, reponse):
         pass
 
