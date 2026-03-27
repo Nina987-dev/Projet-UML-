@@ -205,10 +205,10 @@ def insert_indicateurs(db):
             description = "Indice de Gini mesurant les inégalités de revenus (0=égalité parfaite, 1=inégalité totale)"
         ),
         Indicateur(
-            name        = "Taux d'alphabétisation",
-            unit        = "%",
+            name        = "Mortalité infantile",
+            unit        = "‰",
             category_id = 6,
-            description = "Pourcentage de la population adulte sachant lire et écrire"
+            description = "Nombre de décès d'enfants de moins d'1 an pour 1000 naissances vivantes"
         ),
     ]
     db.add_all(indicateurs)
