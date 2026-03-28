@@ -1,0 +1,2 @@
+#Diagramme de séquence :
+
